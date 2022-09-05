@@ -61,13 +61,29 @@ public enum TypeIdentifierEnum {
     readMultipleParameter(0x84, 4),
 
     /**
-     * 预置单个参数命令
+     * 预置单个参数命令(归一化值)
      */
-    prefabActivationOneParameter(0x30, 4),
+    prefabActivationNormalizedOneParameter(0x30, 2),
     /**
-     * 预置多个个参数
+     * 预置单个参数命令(标度化值)
      */
-    prefabActivationMultipleParameter(0x88, 4),
+    prefabActivationScaledOneParameter(0x30, 2),
+    /**
+     * 预置单个参数命令(浮点数值)
+     */
+    prefabActivationFloatOneParameter(0x30, 4),
+    /**
+     * 预置多个参数(归一化值)
+     */
+    prefabActivationNormalizedMultipleParameter(0x88, 2),
+    /**
+     * 预置多个参数(标度化值)
+     */
+    prefabActivationScaledMultipleParameter(0x89, 2),
+    /**
+     * 预置多个参数(浮点数值)
+     */
+    prefabActivationFloatMultipleParameter(0x8A, 4),
 
     /**
      * 初始化结束
