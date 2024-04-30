@@ -40,7 +40,7 @@ public enum TypeIdentifierEnum {
     /**
      * 测量值 短浮点数 遥测
      */
-    shortFloatingPointTelemetry(0x0D, 2),
+    shortFloatingPointTelemetry(0x0D, 4),
 
     /**
      * 单命令 遥控
