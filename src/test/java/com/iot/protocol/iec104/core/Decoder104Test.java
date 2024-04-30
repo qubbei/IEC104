@@ -10,10 +10,8 @@ import java.io.IOException;
 public class Decoder104Test {
 
 
-
-
     @Test
-    public  void testSoe() throws IOException {
+    public void testSoe() throws IOException {
         MessageDetail messageDetail = Encoder104UtilTest.customInfo();
         byte[] bytes = Encoder104.encoder(messageDetail);
         System.err.println(ByteUtil.byteArrayToHexString(bytes));
@@ -33,7 +31,6 @@ public class Decoder104Test {
 //        00 00
 //        56
 //        7800
-
 
 
         //68

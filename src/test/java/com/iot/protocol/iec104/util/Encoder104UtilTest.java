@@ -1,14 +1,14 @@
 package com.iot.protocol.iec104.util;
 
-import com.iot.protocol.util.Iec104Util;
 import com.iot.protocol.iec104.core.Decoder104;
 import com.iot.protocol.iec104.core.Encoder104;
-import com.iot.protocol.iec104.message.MessageDetail;
-import com.iot.protocol.iec104.message.MessageInfo;
 import com.iot.protocol.iec104.enums.QualifiersEnum;
 import com.iot.protocol.iec104.enums.TypeIdentifierEnum;
 import com.iot.protocol.iec104.enums.UControlEnum;
+import com.iot.protocol.iec104.message.MessageDetail;
+import com.iot.protocol.iec104.message.MessageInfo;
 import com.iot.protocol.util.ByteUtil;
+import com.iot.protocol.util.Iec104Util;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -353,7 +353,7 @@ public class Encoder104UtilTest {
         TypeIdentifierEnum typeIdentifierEnum = TypeIdentifierEnum.shortFloatingPointTelemetry;
         //SQ=0 length =1
         int sq = 1;
-        boolean isContinuous = sq == 0 ? false : true;
+        boolean isContinuous = sq != 0;
         // 接收序号
         short accept = 1;
         // 发送序号
