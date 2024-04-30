@@ -52,11 +52,11 @@ public enum QualifiersEnum {
     /**
      * 设置命令限定词  选择预置参数 1000 0000
      */
-    prefabParameterQualifiers(null, 0x40),
+    prefabParameterQualifiers(null, 0x80),
     /**
      * 设置命令限定词  执行激活参数
      */
-    activationParameterQualifiers(null, 0x0F);
+    activationParameterQualifiers(null, 0x00);
 
     @Getter
     private byte value;
@@ -90,13 +90,23 @@ public enum QualifiersEnum {
                 && qualityQualifiers.getValue() == value) {
             qualifiersEnum = qualityQualifiers;
         }
-        if ((TypeIdentifierEnum.readOneParameter.equals(typeIdentifier)
+
+        //设置命令限定词 （参数预置）
+        if (TypeIdentifierEnum.readOneParameter.equals(typeIdentifier)
                 || TypeIdentifierEnum.readMultipleParameter.equals(typeIdentifier)
-                || TypeIdentifierEnum.prefabActivationOneParameter.equals(typeIdentifier)
-                || TypeIdentifierEnum.prefabActivationMultipleParameter.equals(typeIdentifier))
-                && qualityQualifiers.getValue() == value) {
-            qualifiersEnum = qualityQualifiers;
+                || TypeIdentifierEnum.prefabActivationNormalizedOneParameter.equals(typeIdentifier)
+                || TypeIdentifierEnum.prefabActivationScaledOneParameter.equals(typeIdentifier)
+                || TypeIdentifierEnum.prefabActivationFloatOneParameter.equals(typeIdentifier)
+                || TypeIdentifierEnum.prefabActivationNormalizedMultipleParameter.equals(typeIdentifier)
+                || TypeIdentifierEnum.prefabActivationScaledMultipleParameter.equals(typeIdentifier)
+                || TypeIdentifierEnum.prefabActivationFloatMultipleParameter.equals(typeIdentifier)){
+            if (prefabParameterQualifiers.getValue() == value) {
+                qualifiersEnum = prefabParameterQualifiers;
+            }else if(activationParameterQualifiers.getValue() == value){
+                qualifiersEnum = activationParameterQualifiers;
+            }
         }
+
         return qualifiersEnum;
     }
 }
